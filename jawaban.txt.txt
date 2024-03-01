@@ -1,0 +1,72 @@
+1. buat database
+-> create database myshop;
+
+
+2. Membuat Tabel di dalam Database
+a. buat tabel users
+-> create table users (
+-> id int not null auto_increment primary key,
+-> name varchar(255),
+-> email varchar(255),
+-> password varchar(255)
+-> );
+
+b. buat tabel categories 
+-> create table categories (
+-> id int not null auto_increment primary key,
+-> name varchar(255)
+-> );
+
+c. buat tabel items
+-> create table items (
+-> id int not null auto_increment primary key,
+-> name varchar(255),
+-> description varchar(255),
+-> price int,
+-> stock int,
+-> category_id int,
+-> foreign key (category_id) references categories(id)
+-> );
+
+
+3. Memasukkan Data pada Tabel
+a. masukkan nilai ke tabel users
+-> insert into users (name, email, password)
+-> values
+-> ('John Doe', 'john@doe.com', 'john123'),
+-> ('Jane Doe', 'jane@doe.com', 'jenita123');
+
+b. masukkan nilai ke tabel categories
+-> insert into categories (name)
+-> values
+-> ('gadget'), ('cloth'), ('men'), ('women'), ('branded');
+
+c. masukkan nilai ke tabel items
+-> insert into items (name, description, price, stock, category_id)
+-> values
+-> ('Sumsang b50', 'hape keren dari merek sumsang', 4000000, 100, 1),
+-> ('Uniklooh', 'baju keren dari brand ternama', 500000, 50, 2),
+-> ('IMHO WATCH', 'jam tangan anak yang jujur banget', 2000000, 10, 1);
+
+
+4. Mengambil Data dari Database
+a. tampilkan nilai tabel users, kecuali password
+-> select name, email from users;
+
+b. tampilkan nilai tabel items,
+diatas satu juta 
+-> select * from items
+-> where price>1000000;
+memiliki nama serupa "Uniklooh"
+-> select * from items
+-> where name like 'Uniklooh';
+
+c. tampilkan nilai tabel items join category
+-> select items.name, items.description, items.price, items.stock, items.category_id, categories.name
+-> from items join categories on items.category_id=categories.id;
+
+
+5. Mengubah Data dari Database
+-> update items
+-> set price=2500000
+-> where name like 'Sumsang b50';
