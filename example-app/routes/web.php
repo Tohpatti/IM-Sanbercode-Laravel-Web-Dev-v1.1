@@ -1,8 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PageController;
+// use App\Http\Controllers\HomeController;
+// use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,8 +20,12 @@ use App\Http\Controllers\AuthController;
 //     return view('welcome');
 // });
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/', [PageController::class, 'simple_tables'])->name('simple-tables');
 
-Route::get('/register', [AuthController::class, 'registrationForm'])->name('register');
+Route::get('/data-tables', [PageController::class, 'data_tables'])->name('data-tables');
 
-Route::post('/register', [AuthController::class, 'showGreetings'])->name('greeting');
+// Route::get('/', [HomeController::class, 'index'])->name('home');
+
+// Route::get('/register', [AuthController::class, 'registrationForm'])->name('register');
+
+// Route::post('/register', [AuthController::class, 'showGreetings'])->name('greeting');
